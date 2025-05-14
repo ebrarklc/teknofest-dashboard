@@ -3,19 +3,24 @@ import React from 'react';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
+import RobotMap from './components/RobotMap';
+
 
 const Layout = styled.div`
   display: flex;
+  width: 100vw;
   height: 100vh;
-  background-color: #1e1e2f;
-  color: #ffffff;
+  overflow: hidden;
 `;
+
 
 const MainContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
+
 
 function App() {
   return (
@@ -27,6 +32,7 @@ function App() {
           {/* Buraya map, kartlar, log paneli vs. gelecek */}
           İçerik alanı
         </div>
+        <RobotMap />
       </MainContent>
     </Layout>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Bar = styled.div`
   height: 60px;
   background-color: #2a2a40;

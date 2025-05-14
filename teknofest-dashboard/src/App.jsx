@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import RobotMap from './components/RobotMap';
+import StatusPanel from './components/StatusPanel';
+
 
 
 const Layout = styled.div`
@@ -33,6 +35,7 @@ function App() {
           İçerik alanı
         </div>
         <RobotMap />
+        <StatusPanel />
       </MainContent>
     </Layout>
   );

@@ -1,3 +1,4 @@
+// ScenarioPanel.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -50,10 +51,31 @@ const ScenarioPanel = () => {
 
   const handleAction = (action) => {
     if (selectedQ) {
-      const step = `${selectedQ} ${action}`;
+      const step = { [selectedQ]: action };
       setScenario((prev) => [...prev, step]);
       setSelectedQ('');
     }
+  };
+
+  const handleSend = () => {
+    console.log('Gönderilen senaryo:', scenario);
+
+    // İsteğe bağlı backend POST örneği:
+    /*
+    fetch('http://localhost:8080/api/senaryo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(scenario),
+    })
+    .then(res => res.json())
+    .then(data => console.log('Sunucu cevabı:', data))
+    .catch(err => console.error(err));
+    */
+  };
+
+  const handleClear = () => {
+    setScenario([]);
+    setSelectedQ('');
   };
 
   return (
@@ -71,9 +93,15 @@ const ScenarioPanel = () => {
         <Btn onClick={() => handleAction('BIRAK')}>BIRAK</Btn>
       </ButtonRow>
       <div>🧠 Seçilen: {selectedQ || 'Yok'}</div>
+
+      <ButtonRow>
+        <Btn onClick={handleSend}>📤 Gönder</Btn>
+        <Btn onClick={handleClear}>🧹 Temizle</Btn>
+      </ButtonRow>
+
       <List>
         {scenario.map((step, index) => (
-          <li key={index}>➡️ {step}</li>
+          <li key={index}>➡️ {Object.keys(step)[0]}: {Object.values(step)[0]}</li>
         ))}
       </List>
     </Panel>

@@ -57,21 +57,34 @@ const ScenarioPanel = () => {
     }
   };
 
-  const handleSend = () => {
-    console.log('Gönderilen senaryo:', scenario);
+  const handleSend = async () => {
+  console.log('Gönderilen senaryo:', scenario);
 
-    // İsteğe bağlı backend POST örneği:
-    /*
-    fetch('http://localhost:8080/api/senaryo', {
+  try {
+    const response = await fetch('http://localhost:8080/api/rota', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(scenario),
-    })
-    .then(res => res.json())
-    .then(data => console.log('Sunucu cevabı:', data))
-    .catch(err => console.error(err));
-    */
-  };
+      body: JSON.stringify({ rota: scenario }),
+    });
+
+    if (response.ok) {
+      const result = await fetch('http://localhost:8080/api/route');
+      const data = await result.json();
+
+      // Başarı mesajı
+      alert('✅ Rota Onaylandı!');
+
+      // Konsola yaz
+      console.log('Sunucudan gelen rota:', data);
+    } else {
+      alert('❌ Gönderim başarısız!');
+    }
+  } catch (error) {
+    console.error('Sunucu hatası:', error);
+    alert('❌ Sunucuya ulaşılamadı!');
+  }
+};
+
 
   const handleClear = () => {
     setScenario([]);

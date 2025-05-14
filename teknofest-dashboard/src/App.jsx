@@ -7,6 +7,8 @@ import RobotMap from './components/RobotMap';
 import StatusPanel from './components/StatusPanel';
 import SensorPanel from './components/SensorPanel';
 import LogPanel from './components/LogPanel';
+import ScenarioPanel from './components/ScenarioPanel';
+
 
 
 
@@ -41,6 +43,7 @@ function App() {
         <StatusPanel />
         <SensorPanel />
         <LogPanel />
+        <ScenarioPanel />
       </MainContent>
     </Layout>
   );

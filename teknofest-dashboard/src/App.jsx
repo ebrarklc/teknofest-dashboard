@@ -5,6 +5,9 @@ import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import RobotMap from './components/RobotMap';
 import StatusPanel from './components/StatusPanel';
+import SensorPanel from './components/SensorPanel';
+import LogPanel from './components/LogPanel';
+
 
 
 
@@ -36,6 +39,8 @@ function App() {
         </div>
         <RobotMap />
         <StatusPanel />
+        <SensorPanel />
+        <LogPanel />
       </MainContent>
     </Layout>
   );
